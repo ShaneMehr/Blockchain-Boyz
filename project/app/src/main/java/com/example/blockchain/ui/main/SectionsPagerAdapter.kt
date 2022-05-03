@@ -1,14 +1,10 @@
 package com.example.blockchain.ui.main
 
 import android.content.Context
-import android.widget.Switch
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
-import com.example.blockchain.FragmentHoldings
-import com.example.blockchain.FragmentMarket
-import com.example.blockchain.FragmentNews
-import com.example.blockchain.R
+import com.example.blockchain.*
 
 private val TAB_TITLES = arrayOf(
     R.string.tab_text_1,

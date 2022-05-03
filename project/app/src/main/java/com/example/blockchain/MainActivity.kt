@@ -8,6 +8,7 @@ import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
 import android.view.Menu
 import android.view.MenuItem
+import android.widget.Button
 import android.widget.TextView
 import com.example.blockchain.ui.main.SectionsPagerAdapter
 import com.example.blockchain.databinding.ActivityMainBinding
@@ -29,4 +30,11 @@ class MainActivity : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
 
     }
+
+    override fun onResume() {
+        super.onResume()
+
+
+    }
+
 }
