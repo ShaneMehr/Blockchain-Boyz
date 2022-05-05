@@ -7,7 +7,7 @@
     android:layout_gravity="center">
 
     <TextView
-        android:id="@+id/holdingTitle"
+        android:id="@+id/balanceTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="500dp"
@@ -19,7 +19,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/holdingUSD"
+        android:id="@+id/balanceUSD"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="200dp"
@@ -31,7 +31,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/holdingETH"
+        android:id="@+id/balanceETH"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="0dp"
@@ -43,9 +43,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/holdingBuy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/balanceBuy"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
         android:layout_marginTop="400dp"
         android:layout_marginRight="200dp"
         android:text="BUY"
@@ -56,11 +56,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/holdingSELL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
+        android:id="@+id/balanceSELL"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
         android:layout_marginLeft="200dp"
+        android:layout_marginTop="400dp"
         android:text="SELL"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
