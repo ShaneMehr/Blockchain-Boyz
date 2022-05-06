@@ -28,7 +28,7 @@ class SectionsPagerAdapter(private val context: Context, fm: FragmentManager) :
             //return PlaceholderFragment.newInstance(position + 1)
         }
         if (position == 1) {
-            newFrag = FragmentHoldings()
+            newFrag = FragmentBalance()
         }
         if (position == 2) {
             newFrag = FragmentMarket()

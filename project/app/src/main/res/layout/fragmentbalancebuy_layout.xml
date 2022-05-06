@@ -4,14 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:id="@+id/balance_buy_view"
+    android:background="@android:color/white">
 
     <TextView
-        android:id="@+id/holdingTitle"
+        android:id="@+id/balanceBuyTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="500dp"
-        android:text="Balance"
+        android:text="Buy Ethereum"
         android:textSize="50dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
@@ -19,50 +21,75 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/holdingUSD"
+        android:id="@+id/balanceBuyDollarsign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="200dp"
         android:text="$"
         android:textSize="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/balanceBuyUSD"
+        app:layout_constraintHorizontal_bias="0.18"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/balanceBuyUSD" />
+
+    <EditText
+        android:id="@+id/balanceBuyUSD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.502"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.381" />
 
     <TextView
-        android:id="@+id/holdingETH"
+        android:id="@+id/balanceBuyEthereumsign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="0dp"
         android:text="ETH"
         android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="@+id/balanceBuyETH"
+        app:layout_constraintHorizontal_bias="0.929"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/balanceBuyETH"
+        app:layout_constraintVertical_bias="0.503" />
+
+    <EditText
+        android:id="@+id/balanceBuyETH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/holdingBuy"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/balanceBuyCancel"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
         android:layout_marginTop="400dp"
         android:layout_marginRight="200dp"
-        android:text="BUY"
-        android:textSize="30dp"
+        android:text="CANCEL"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/holdingSELL"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="400dp"
+        android:id="@+id/balanceBuyConfirm"
+        android:layout_width="160dp"
+        android:layout_height="100dp"
         android:layout_marginLeft="200dp"
-        android:text="SELL"
-        android:textSize="30dp"
+        android:layout_marginTop="400dp"
+        android:text="CONFIRM"
+        android:textSize="25dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
