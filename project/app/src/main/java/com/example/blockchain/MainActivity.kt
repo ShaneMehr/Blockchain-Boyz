@@ -15,6 +15,7 @@ import android.widget.TextView
 import android.widget.Toast
 import com.example.blockchain.ui.main.SectionsPagerAdapter
 import com.example.blockchain.databinding.ActivityMainBinding
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 
 class MainActivity : AppCompatActivity() {
@@ -45,12 +46,6 @@ class MainActivity : AppCompatActivity() {
         viewPager.adapter = sectionsPagerAdapter
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
-
-<<<<<<< HEAD
-
-=======
-    }
->>>>>>> 268b40eea0db3dbe2c68990d69b69d1e6314600f
 
 
 
