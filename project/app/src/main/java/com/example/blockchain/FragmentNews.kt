@@ -6,16 +6,18 @@ import android.view.ViewGroup
 import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
-import com.example.blockchain.R
-import android.os.AsyncTask
+import android.util.Log
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.CoroutineScope
+import com.prof.rssparser.Parser
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import java.io.IOException
 import java.io.InputStream
 import java.lang.ref.WeakReference
 import java.net.HttpURLConnection
 import java.net.URL
+import java.nio.charset.Charset
 
 class FragmentNews : Fragment() {
 
@@ -47,17 +49,45 @@ class FragmentNews : Fragment() {
         listV?.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         listV?.adapter = adapter
 
-        val url = URL(RSS_FEED_LINK)
-        //need to implement
-        //RssFeedFetcher(this).execute(url)
+        RssFeedFetcher(context)
+
+
     }
 
-    fun updateRV(rssItemsL: List<RssItem>) {
-        if (rssItemsL != null && rssItemsL.isNotEmpty()) {
-            rssItems.addAll(rssItemsL)
-            adapter?.notifyDataSetChanged()
+    fun RssFeedFetcher(context: Context): ArrayList<RssItem> {
+        val parser = Parser.Builder()
+            .context(context)
+            .charset(Charset.forName("ISO-8859-7"))
+            .cacheExpirationMillis(24L * 60L * 60L * 100L) // one day
+            .build()
+        runBlocking {
+            launch {
+                val channel = parser.getChannel(url = RSS_FEED_LINK)
+                Log.d("MyChannel",channel.toString())
+
+                for(item in channel.articles){
+                    val itemToAdd = RssItem()
+                    itemToAdd.title = item.title.toString()
+                    itemToAdd.link = item.link.toString()
+                    itemToAdd.pubDate = item.pubDate.toString()
+                    itemToAdd.description = item.description.toString()
+                    itemToAdd.category = item.categories[0]
+                    rssItems.add(itemToAdd)
+                    Log.d("Item",itemToAdd.toString())
+
+                }
+            }
         }
+        return rssItems
     }
+
+
+//    fun updateRV(rssItemsL: List<RssItem>) {
+//        if (rssItemsL != null && rssItemsL.isNotEmpty()) {
+//            rssItems.addAll(rssItemsL)
+//            adapter?.notifyDataSetChanged()
+//        }
+//    }
 
     interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name

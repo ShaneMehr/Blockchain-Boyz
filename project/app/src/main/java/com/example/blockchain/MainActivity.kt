@@ -48,7 +48,6 @@ class MainActivity : AppCompatActivity() {
         tabs.setupWithViewPager(viewPager)
 
 
-
         logoutBtn = findViewById(R.id.buttonSignOut)
         logoutBtn.visibility = View.VISIBLE
         logoutBtn.setOnClickListener{
