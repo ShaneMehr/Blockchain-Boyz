@@ -4,7 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_gravity="center">
+    android:layout_gravity="center"
+    android:visibility="visible"
+    android:id="@+id/balance_view"
+    android:background="@android:color/white">
+
 
     <TextView
         android:id="@+id/balanceTitle"
@@ -46,8 +50,8 @@
         android:id="@+id/balanceBuy"
         android:layout_width="160dp"
         android:layout_height="100dp"
+        android:layout_marginLeft="200dp"
         android:layout_marginTop="400dp"
-        android:layout_marginRight="200dp"
         android:text="BUY"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -56,11 +60,11 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/balanceSELL"
+        android:id="@+id/balanceSell"
         android:layout_width="160dp"
         android:layout_height="100dp"
-        android:layout_marginLeft="200dp"
         android:layout_marginTop="400dp"
+        android:layout_marginRight="200dp"
         android:text="SELL"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="parent"

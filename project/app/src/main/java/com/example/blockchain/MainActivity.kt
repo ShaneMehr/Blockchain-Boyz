@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
         val tabs: TabLayout = binding.tabs
         tabs.setupWithViewPager(viewPager)
 
-
     }
 
     override fun onResume() {
