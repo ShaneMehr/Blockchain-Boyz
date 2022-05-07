@@ -27,13 +27,13 @@ class MyItemRecyclerViewAdapter(
             //val item = v.tag as DummyItem
             // Notify the active callbacks interface (the activity, if the fragment is attached to
             // one) that an item has been selected.
-            //mListener?.onListFragmentInteraction(item)
+           // mListener?.onListFragmentInteraction(item)
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragmentnews_layout, parent, false)
+            .inflate(R.layout.fragment_rss_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -41,12 +41,12 @@ class MyItemRecyclerViewAdapter(
         val item = mValues[position]
         holder.titleTV?.text = item.title
         holder.pubDateTV?.text = item.pubDate
-        var link = getFeaturedImageLink(item.description)
+        var link = getFeaturedImageLink(item.link)
         if(link != null) {
             context?.let {
                 GlideApp.with(it)
                     .load(link)
-                    .into(holder.featuredImg)
+
             }
         }
         holder.contentTV?.text  =item.description
@@ -57,13 +57,16 @@ class MyItemRecyclerViewAdapter(
         }
     }
 
-    override fun getItemCount(): Int = mValues.size
+    override fun getItemCount(): Int {
+        return mValues.size
+    }
+
 
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val titleTV: TextView? = mView.findViewById(R.id.txtTitle)
         val pubDateTV: TextView? = mView.findViewById(R.id.txtPubdate)
         val contentTV: TextView? = mView.findViewById(R.id.txtContent)
-        val featuredImg: ImageView = mView.findViewById(R.id.featuredImg);
+        //val featuredImg: ImageView = mView.findViewById(R.id.featuredImg);
 
 
     }

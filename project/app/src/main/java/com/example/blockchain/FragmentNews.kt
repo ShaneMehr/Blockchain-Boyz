@@ -27,10 +27,10 @@ class FragmentNews : Fragment() {
 
     val RSS_FEED_LINK = "http://cointelegraph.com/rss/tag/altcoin";
 
-    var adapter: MyItemRecyclerViewAdapter? = null
+    private var adapter: MyItemRecyclerViewAdapter? = null
     var rssItems = ArrayList<RssItem>()
 
-    var listV : RecyclerView ?= null
+    private var listV : RecyclerView? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -39,22 +39,34 @@ class FragmentNews : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragmentnews_layout, container, false)
         listV = view.findViewById(R.id.listV)
+        listV?.setHasFixedSize(true)
+        listV?.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+        context?.let { rssFeedFetcher(it) }
+        val subList = rssItems.subList(0,7)
+        adapter = MyItemRecyclerViewAdapter(rssItems, listener,activity)
+
+        listV?.adapter= adapter
+
+//        val fragmentManager = requireActivity().supportFragmentManager
+//        val fragmentTransaction = fragmentManager!!.beginTransaction()
+//        fragmentTransaction.commit()
+//        fragmentManager.executePendingTransactions()
         return view
     }
 
     // Changed Lowkey
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        adapter = MyItemRecyclerViewAdapter(rssItems, listener,activity)
-        listV?.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
-        listV?.adapter = adapter
+//    override fun onAttach(context: Context) {
+//        super.onAttach(context)
+//        adapter = MyItemRecyclerViewAdapter(rssItems, listener,activity)
+//        listV?.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
+//        listV?.adapter = adapter
+//
+//        rssFeedFetcher(context)
+//
+//
+//    }
 
-        RssFeedFetcher(context)
-
-
-    }
-
-    fun RssFeedFetcher(context: Context): ArrayList<RssItem> {
+    fun rssFeedFetcher(context: Context): ArrayList<RssItem> {
         val parser = Parser.Builder()
             .context(context)
             .charset(Charset.forName("ISO-8859-7"))
@@ -64,7 +76,7 @@ class FragmentNews : Fragment() {
             launch {
                 val channel = parser.getChannel(url = RSS_FEED_LINK)
                 Log.d("MyChannel",channel.toString())
-
+                var count =0
                 for(item in channel.articles){
                     val itemToAdd = RssItem()
                     itemToAdd.title = item.title.toString()
@@ -72,7 +84,9 @@ class FragmentNews : Fragment() {
                     itemToAdd.pubDate = item.pubDate.toString()
                     itemToAdd.description = item.description.toString()
                     itemToAdd.category = item.categories[0]
+
                     rssItems.add(itemToAdd)
+                    count+=1
                     Log.d("Item",itemToAdd.toString())
 
                 }

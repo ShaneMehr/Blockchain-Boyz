@@ -3,9 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/listV"
-    android:name="com.relsellglobal.kotlinrssreading.RSSFragment"
+    android:name="com.example.blockchain.FragmentNews"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     app:layoutManager="LinearLayoutManager"
     tools:context=".FragmentNews"
     tools:listitem="@layout/fragment_rss_item" />
