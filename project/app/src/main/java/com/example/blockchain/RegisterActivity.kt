@@ -23,15 +23,20 @@ class RegisterActivity : AppCompatActivity() {
     fun register(view: View){
         val email=editTextEmailAddress.text.toString()
         val password=editTextPassword.text.toString()
-
-        auth.createUserWithEmailAndPassword(email,password).addOnCompleteListener { task ->
-            if(task.isSuccessful){
-                val intent= Intent(this,MainActivity::class.java)
-                startActivity(intent)
-                finish()
+        if(!(email.isEmpty() || email == "" || password.isEmpty() || password == "")) {
+            auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener { task ->
+                if (task.isSuccessful) {
+                    val intent = Intent(this, MainActivity::class.java)
+                    startActivity(intent)
+                    finish()
+                }
+            }.addOnFailureListener { exception ->
+                Toast.makeText(applicationContext, exception.localizedMessage, Toast.LENGTH_LONG)
+                    .show()
             }
-        }.addOnFailureListener { exception ->
-            Toast.makeText(applicationContext,exception.localizedMessage,Toast.LENGTH_LONG).show()
+        }else{
+            Toast.makeText(applicationContext, "Please fill out all fields", Toast.LENGTH_LONG)
+                .show()
         }
     }
 
