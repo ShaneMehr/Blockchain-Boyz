@@ -1,5 +1,6 @@
 package com.example.blockchain
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +20,7 @@ class FragmentBalanceSell : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        container?.removeAllViews()
         val newView = inflater.inflate(R.layout.fragmentbalancesell_layout, container, false)
         val confirmButton = newView.findViewById<Button>(R.id.balanceSellConfirm)
         val cancelButton = newView.findViewById<Button>(R.id.balanceSellCancel)
@@ -41,7 +43,7 @@ class FragmentBalanceSell : Fragment() {
         ethView.setOnClickListener {
             if (ethView.text.toString() != "") {
                 val ethQuantity = ethView.text.toString().toFloat()
-                var usdQuantity = "%.2f".format(Locale.ENGLISH,(ethQuantity * ethValue))
+                var usdQuantity = "%.2f".format(Locale.ENGLISH, (ethQuantity * ethValue))
                 usdView.setText(usdQuantity.toString())
             } else {
                 usdView.setText("")
@@ -50,7 +52,9 @@ class FragmentBalanceSell : Fragment() {
         }
         confirmButton.setOnClickListener {
             if (usdView.text.toString() != "" && ethView.text.toString() != "") {
-                if (usdView.text.toString().toFloat() > 0 && ethView.text.toString().toFloat() > 0) {
+                if (usdView.text.toString().toFloat() > 0 && ethView.text.toString()
+                        .toFloat() > 0
+                ) {
                     myRef.get().addOnSuccessListener {
                         val ethBalance = it.value.toString().toFloat()
                         if (ethView.text.toString().toFloat() <= ethBalance) {
@@ -60,26 +64,35 @@ class FragmentBalanceSell : Fragment() {
                             fragmentTransaction.replace(R.id.balance_sell_view, FragmentBalance())
                             fragmentTransaction.commit()
                             fragmentManager.executePendingTransactions()
-                            confirmButton.visibility = View.INVISIBLE
-                            cancelButton.visibility = View.INVISIBLE
-                            usdView.visibility = View.INVISIBLE
-                            ethView.visibility = View.INVISIBLE
+                            //confirmButton.visibility = View.INVISIBLE
+                            //cancelButton.visibility = View.INVISIBLE
+                            //usdView.visibility = View.INVISIBLE
+                            //ethView.visibility = View.INVISIBLE
                         } else {
-                            Toast.makeText(newView.context, "Please enter a quantity less than or equal to your current balance",
-                                Toast.LENGTH_LONG).show()
+                            Toast.makeText(
+                                newView.context,
+                                "Please enter a quantity less than or equal to your current balance",
+                                Toast.LENGTH_LONG
+                            ).show()
                         }
                     }
                     myRef.get().addOnFailureListener {
-                        Toast.makeText(newView.context, "Error with database, please try again",
-                            Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            newView.context, "Error with database, please try again",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 } else {
-                    Toast.makeText(newView.context, "Please enter a quantity greater than 0",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        newView.context, "Please enter a quantity greater than 0",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
-                Toast.makeText(newView.context, "Please enter a quantity to sell",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    newView.context, "Please enter a quantity to sell",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         cancelButton.setOnClickListener {
@@ -88,10 +101,10 @@ class FragmentBalanceSell : Fragment() {
             fragmentTransaction.replace(R.id.balance_sell_view, FragmentBalance())
             fragmentTransaction.commit()
             fragmentManager.executePendingTransactions()
-            confirmButton.visibility = View.INVISIBLE
-            cancelButton.visibility = View.INVISIBLE
-            usdView.visibility = View.INVISIBLE
-            ethView.visibility = View.INVISIBLE
+            //confirmButton.visibility = View.INVISIBLE
+            //cancelButton.visibility = View.INVISIBLE
+            //usdView.visibility = View.INVISIBLE
+            //ethView.visibility = View.INVISIBLE
         }
         return newView
     }

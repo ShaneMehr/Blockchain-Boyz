@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:layout_gravity="center"
     android:id="@+id/balance_buy_view"
-    android:background="@android:color/white">
+    android:background="@android:color/black">
 
     <TextView
         android:id="@+id/balanceBuyTitle"
@@ -81,7 +81,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/balanceBuyETH"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/balanceBuyETH"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/noRed"/>
 
     <Button
         android:id="@+id/balanceBuyConfirm"
@@ -94,6 +95,7 @@
         app:layout_constraintBottom_toBottomOf="@+id/balanceBuyETH"
         app:layout_constraintLeft_toRightOf="@+id/balanceBuyETH"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:backgroundTint="@color/yesGreen"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

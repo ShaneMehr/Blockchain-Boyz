@@ -1,5 +1,6 @@
 package com.example.blockchain
 
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -18,6 +19,7 @@ class FragmentBalance : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        container?.removeAllViews()
         val newView = inflater.inflate(R.layout.fragmentbalance_layout, container, false)
         val usdView = newView.findViewById<TextView>(R.id.balanceUSD)
         val ethView = newView.findViewById<TextView>(R.id.balanceETH)
@@ -33,7 +35,8 @@ class FragmentBalance : Fragment() {
                 usdView.text = "$0"
             } else {
                 ethView.text = (it.value.toString() + " ETH")
-                val roundedUSD = "%,.2f".format(Locale.ENGLISH, (it.value.toString().toFloat() * ethValue))
+                val roundedUSD =
+                    "%,.2f".format(Locale.ENGLISH, (it.value.toString().toFloat() * ethValue))
                 usdView.text = "$" + roundedUSD.toString()
             }
         }
@@ -43,8 +46,8 @@ class FragmentBalance : Fragment() {
             fragmentTransaction.replace(R.id.balance_view, FragmentBalanceBuy())
             fragmentTransaction.commit()
             fragmentManager.executePendingTransactions()
-            buyButton.visibility = View.INVISIBLE
-            sellButton.visibility = View.INVISIBLE
+            //buyButton.visibility = View.INVISIBLE
+            //sellButton.visibility = View.INVISIBLE
         }
         sellButton.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
@@ -52,8 +55,8 @@ class FragmentBalance : Fragment() {
             fragmentTransaction.replace(R.id.balance_view, FragmentBalanceSell())
             fragmentTransaction.commit()
             fragmentManager.executePendingTransactions()
-            buyButton.visibility = View.INVISIBLE
-            sellButton.visibility = View.INVISIBLE
+            //buyButton.visibility = View.INVISIBLE
+            //sellButton.visibility = View.INVISIBLE
         }
         return newView
     }

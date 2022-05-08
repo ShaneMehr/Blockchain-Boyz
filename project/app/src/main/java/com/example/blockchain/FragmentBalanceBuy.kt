@@ -1,5 +1,7 @@
 package com.example.blockchain
 
+import android.content.Context
+import android.content.res.Configuration
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -19,6 +21,7 @@ class FragmentBalanceBuy : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        container?.removeAllViews()
         val newView = inflater.inflate(R.layout.fragmentbalancebuy_layout, container, false)
         val confirmButton = newView.findViewById<Button>(R.id.balanceBuyConfirm)
         val cancelButton = newView.findViewById<Button>(R.id.balanceBuyCancel)
@@ -41,7 +44,7 @@ class FragmentBalanceBuy : Fragment() {
         ethView.setOnClickListener {
             if (ethView.text.toString() != "") {
                 val ethQuantity = ethView.text.toString().toFloat()
-                var usdQuantity = "%.2f".format(Locale.ENGLISH,(ethQuantity * ethValue))
+                var usdQuantity = "%.2f".format(Locale.ENGLISH, (ethQuantity * ethValue))
                 usdView.setText(usdQuantity)
             } else {
                 usdView.setText("")
@@ -50,7 +53,9 @@ class FragmentBalanceBuy : Fragment() {
         }
         confirmButton.setOnClickListener {
             if (usdView.text.toString() != "" && ethView.text.toString() != "") {
-                if (usdView.text.toString().toFloat() > 0 && ethView.text.toString().toFloat() > 0) {
+                if (usdView.text.toString().toFloat() > 0 && ethView.text.toString()
+                        .toFloat() > 0
+                ) {
                     myRef.get().addOnSuccessListener {
                         val ethBalance = it.value.toString().toFloat()
                         myRef.setValue(ethBalance + ethView.text.toString().toFloat())
@@ -59,22 +64,28 @@ class FragmentBalanceBuy : Fragment() {
                         fragmentTransaction.replace(R.id.balance_buy_view, FragmentBalance())
                         fragmentTransaction.commit()
                         fragmentManager.executePendingTransactions()
-                        confirmButton.visibility = View.INVISIBLE
-                        cancelButton.visibility = View.INVISIBLE
-                        usdView.visibility = View.INVISIBLE
-                        ethView.visibility = View.INVISIBLE
+                        //confirmButton.visibility = View.INVISIBLE
+                        //cancelButton.visibility = View.INVISIBLE
+                        //usdView.visibility = View.INVISIBLE
+                        //ethView.visibility = View.INVISIBLE
                     }
                     myRef.get().addOnFailureListener {
-                        Toast.makeText(newView.context, "Error with database, please try again",
-                            Toast.LENGTH_SHORT).show()
+                        Toast.makeText(
+                            newView.context, "Error with database, please try again",
+                            Toast.LENGTH_SHORT
+                        ).show()
                     }
                 } else {
-                    Toast.makeText(newView.context, "Please enter a quantity greater than 0",
-                        Toast.LENGTH_SHORT).show()
+                    Toast.makeText(
+                        newView.context, "Please enter a quantity greater than 0",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
             } else {
-                Toast.makeText(newView.context, "Please enter a quantity to purchase",
-                    Toast.LENGTH_SHORT).show()
+                Toast.makeText(
+                    newView.context, "Please enter a quantity to purchase",
+                    Toast.LENGTH_SHORT
+                ).show()
             }
         }
         cancelButton.setOnClickListener {
@@ -83,10 +94,10 @@ class FragmentBalanceBuy : Fragment() {
             fragmentTransaction.replace(R.id.balance_buy_view, FragmentBalance())
             fragmentTransaction.commit()
             fragmentManager.executePendingTransactions()
-            confirmButton.visibility = View.INVISIBLE
-            cancelButton.visibility = View.INVISIBLE
-            usdView.visibility = View.INVISIBLE
-            ethView.visibility = View.INVISIBLE
+            //confirmButton.visibility = View.INVISIBLE
+            //cancelButton.visibility = View.INVISIBLE
+            //usdView.visibility = View.INVISIBLE
+            //ethView.visibility = View.INVISIBLE
         }
         return newView
     }

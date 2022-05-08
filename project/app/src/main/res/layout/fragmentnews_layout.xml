@@ -8,4 +8,5 @@
     android:layout_height="wrap_content"
     app:layoutManager="LinearLayoutManager"
     tools:context=".FragmentNews"
-    tools:listitem="@layout/fragment_rss_item" />
+    tools:listitem="@layout/fragment_rss_item"
+    />

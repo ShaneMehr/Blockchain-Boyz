@@ -56,7 +56,8 @@ class FragmentNews : Fragment() {
     fun rssFeedFetcher(context: Context): ArrayList<RssItem> {
         val parser = Parser.Builder()
             .context(context)
-            .charset(Charset.forName("ISO-8859-7"))
+            //.charset(Charset.forName("ISO-8859-7"))
+            .charset(Charset.forName("UTF-8"))
             .cacheExpirationMillis(24L * 60L * 60L * 100L) // one day
             .build()
         runBlocking {

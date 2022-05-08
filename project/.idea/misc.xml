@@ -5,24 +5,23 @@
       <map>
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1735" />
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1735" />
-        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout-land/fragmentbalance_layout.xml" value="0.33" />
+        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout-land/fragmentbalance_layout.xml" value="0.1" />
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout-land/fragmentbalancebuy_layout.xml" value="0.31040564373897706" />
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout-land/fragmentbalancesell_layout.xml" value="0.31040564373897706" />
+        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/activity_login.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/activity_register.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/crypto_list_fragment.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/fragment_main.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/fragmentbalance_layout.xml" value="0.22" />
-        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/fragmentbalancebuy_layout.xml" value="0.22" />
+        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/fragment_rss_item.xml" value="0.17831813576494426" />
+        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/fragmentbalance_layout.xml" value="0.1" />
+        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/fragmentbalancebuy_layout.xml" value="0.1" />
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/fragmentbalancesell_layout.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/fragmentholdings_layout.xml" value="0.25" />
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/fragmentmarket_layout.xml" value="0.1322463768115942" />
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/fragmentnews_layout.xml" value="0.33" />
+        <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/layout/row.xml" value="0.17831813576494426" />
         <entry key="..\:/Users/Shane/Documents/cmsc436/Blockchain-Boyz/project/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.1735" />
-        <entry key="..\:/Users/jacob/Desktop/Blockchain-Boyz/project/app/src/main/res/drawable/appbar_shape.xml" value="0.1295" />
-        <entry key="..\:/Users/jacob/Desktop/Blockchain-Boyz/project/app/src/main/res/drawable/container_bordered.xml" value="0.128" />
-        <entry key="..\:/Users/jacob/Desktop/Blockchain-Boyz/project/app/src/main/res/drawable/ic_bitcoin.xml" value="0.1" />
-        <entry key="..\:/Users/jacob/Desktop/Blockchain-Boyz/project/app/src/main/res/layout/crypto_list_fragment.xml" value="0.1087866108786611" />
-        <entry key="..\:/Users/jacob/Desktop/Blockchain-Boyz/project/app/src/main/res/layout/crypto_list_item.xml" value="0.22146739130434784" />
-        <entry key="..\:/Users/jacob/Desktop/Blockchain-Boyz/project/app/src/main/res/layout/fragmentbalance_layout.xml" value="0.25677083333333334" />
       </map>
     </option>
   </component>
