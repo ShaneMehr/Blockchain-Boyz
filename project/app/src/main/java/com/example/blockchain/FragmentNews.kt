@@ -42,7 +42,7 @@ class FragmentNews : Fragment() {
         listV?.setHasFixedSize(true)
         listV?.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         context?.let { rssFeedFetcher(it) }
-        val subList = rssItems.subList(0,7)
+        //val subList = rssItems.subList(0,7)
         adapter = MyItemRecyclerViewAdapter(rssItems, listener,activity)
 
         listV?.adapter= adapter
