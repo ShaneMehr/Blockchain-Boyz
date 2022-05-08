@@ -83,7 +83,7 @@ class FragmentNews : Fragment() {
                     itemToAdd.link = item.link.toString()
                     itemToAdd.pubDate = item.pubDate.toString()
                     itemToAdd.description = item.description.toString()
-                    itemToAdd.category = item.categories[0]
+                    itemToAdd.category = "item.categories[0]"
 
                     rssItems.add(itemToAdd)
                     count+=1
