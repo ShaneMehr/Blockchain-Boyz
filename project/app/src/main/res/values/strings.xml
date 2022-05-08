@@ -5,4 +5,11 @@
     <string name="tab_text_3">Market</string>
     <string name="title_txt">Title</string>
     <string name="publication_date_txt">Publication Date</string>
+    <string name="rank_title">#</string>
+    <string name="name_title">Name</string>
+    <string name="symbol_title">Symbol</string>
+    <string name="price_title">Price</string>
+    <string name="percentage_title">%</string>
+    <string name="logo_desc">logo</string>
+    <string name="splash_title">Crypto App</string>
 </resources>

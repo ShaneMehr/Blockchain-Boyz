@@ -42,29 +42,16 @@ class FragmentNews : Fragment() {
         listV?.setHasFixedSize(true)
         listV?.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
         context?.let { rssFeedFetcher(it) }
-        val subList = rssItems.subList(0,7)
+        //val subList = rssItems.subList(0,7)
         adapter = MyItemRecyclerViewAdapter(rssItems, listener,activity)
 
         listV?.adapter= adapter
 
-//        val fragmentManager = requireActivity().supportFragmentManager
-//        val fragmentTransaction = fragmentManager!!.beginTransaction()
-//        fragmentTransaction.commit()
-//        fragmentManager.executePendingTransactions()
+
         return view
     }
 
-    // Changed Lowkey
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        adapter = MyItemRecyclerViewAdapter(rssItems, listener,activity)
-//        listV?.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
-//        listV?.adapter = adapter
-//
-//        rssFeedFetcher(context)
-//
-//
-//    }
+
 
     fun rssFeedFetcher(context: Context): ArrayList<RssItem> {
         val parser = Parser.Builder()
