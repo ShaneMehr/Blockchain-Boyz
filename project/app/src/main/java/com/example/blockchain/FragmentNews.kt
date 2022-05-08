@@ -47,24 +47,11 @@ class FragmentNews : Fragment() {
 
         listV?.adapter= adapter
 
-//        val fragmentManager = requireActivity().supportFragmentManager
-//        val fragmentTransaction = fragmentManager!!.beginTransaction()
-//        fragmentTransaction.commit()
-//        fragmentManager.executePendingTransactions()
+
         return view
     }
 
-    // Changed Lowkey
-//    override fun onAttach(context: Context) {
-//        super.onAttach(context)
-//        adapter = MyItemRecyclerViewAdapter(rssItems, listener,activity)
-//        listV?.layoutManager = LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false)
-//        listV?.adapter = adapter
-//
-//        rssFeedFetcher(context)
-//
-//
-//    }
+
 
     fun rssFeedFetcher(context: Context): ArrayList<RssItem> {
         val parser = Parser.Builder()
