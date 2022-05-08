@@ -15,17 +15,17 @@ import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import java.util.*
 
-class FragmentBalanceBuy : Fragment() {
+class FragmentBalanceSell : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        val newView = inflater.inflate(R.layout.fragmentbalancebuy_layout, container, false)
-        val confirmButton = newView.findViewById<Button>(R.id.balanceBuyConfirm)
-        val cancelButton = newView.findViewById<Button>(R.id.balanceBuyCancel)
-        val usdView = newView.findViewById<EditText>(R.id.balanceBuyUSD)
-        val ethView = newView.findViewById<EditText>(R.id.balanceBuyETH)
+        val newView = inflater.inflate(R.layout.fragmentbalancesell_layout, container, false)
+        val confirmButton = newView.findViewById<Button>(R.id.balanceSellConfirm)
+        val cancelButton = newView.findViewById<Button>(R.id.balanceSellCancel)
+        val usdView = newView.findViewById<EditText>(R.id.balanceSellUSD)
+        val ethView = newView.findViewById<EditText>(R.id.balanceSellETH)
         val ethValue = 2743.22
         val userid = FirebaseAuth.getInstance().currentUser!!.uid
         val myRef = Firebase.database.getReference(userid)
@@ -44,7 +44,7 @@ class FragmentBalanceBuy : Fragment() {
             if (ethView.text.toString() != "") {
                 val ethQuantity = ethView.text.toString().toFloat()
                 var usdQuantity = "%.2f".format(Locale.ENGLISH,(ethQuantity * ethValue))
-                usdView.setText(usdQuantity)
+                usdView.setText(usdQuantity.toString())
             } else {
                 usdView.setText("")
                 ethView.setText("")
@@ -55,16 +55,21 @@ class FragmentBalanceBuy : Fragment() {
                 if (usdView.text.toString().toFloat() > 0 && ethView.text.toString().toFloat() > 0) {
                     myRef.get().addOnSuccessListener {
                         val ethBalance = it.value.toString().toFloat()
-                        myRef.setValue(ethBalance + ethView.text.toString().toFloat())
-                        val fragmentManager = requireActivity().supportFragmentManager
-                        val fragmentTransaction = fragmentManager!!.beginTransaction()
-                        fragmentTransaction.replace(R.id.balance_buy_view, FragmentBalance())
-                        fragmentTransaction.commit()
-                        fragmentManager.executePendingTransactions()
-                        confirmButton.visibility = View.INVISIBLE
-                        cancelButton.visibility = View.INVISIBLE
-                        usdView.visibility = View.INVISIBLE
-                        ethView.visibility = View.INVISIBLE
+                        if (ethView.text.toString().toFloat() <= ethBalance) {
+                            myRef.setValue(ethBalance - ethView.text.toString().toFloat())
+                            val fragmentManager = requireActivity().supportFragmentManager
+                            val fragmentTransaction = fragmentManager!!.beginTransaction()
+                            fragmentTransaction.replace(R.id.balance_sell_view, FragmentBalance())
+                            fragmentTransaction.commit()
+                            fragmentManager.executePendingTransactions()
+                            confirmButton.visibility = View.INVISIBLE
+                            cancelButton.visibility = View.INVISIBLE
+                            usdView.visibility = View.INVISIBLE
+                            ethView.visibility = View.INVISIBLE
+                        } else {
+                            Toast.makeText(newView.context, "Please enter a quantity less than or equal to your current balance",
+                                Toast.LENGTH_LONG).show()
+                        }
                     }
                     myRef.get().addOnFailureListener {
                         Toast.makeText(newView.context, "Error with database, please try again",
@@ -75,14 +80,14 @@ class FragmentBalanceBuy : Fragment() {
                         Toast.LENGTH_SHORT).show()
                 }
             } else {
-                Toast.makeText(newView.context, "Please enter a quantity to purchase",
+                Toast.makeText(newView.context, "Please enter a quantity to sell",
                     Toast.LENGTH_SHORT).show()
             }
         }
         cancelButton.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
             val fragmentTransaction = fragmentManager!!.beginTransaction()
-            fragmentTransaction.replace(R.id.balance_buy_view, FragmentBalance())
+            fragmentTransaction.replace(R.id.balance_sell_view, FragmentBalance())
             fragmentTransaction.commit()
             fragmentManager.executePendingTransactions()
             confirmButton.visibility = View.INVISIBLE

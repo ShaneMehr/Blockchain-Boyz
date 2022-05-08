@@ -13,9 +13,12 @@ import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentTransaction
 import android.content.SharedPreferences
 import android.widget.EditText
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import java.util.*
 
 class FragmentBalance : Fragment() {
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -26,12 +29,19 @@ class FragmentBalance : Fragment() {
         val ethView = newView.findViewById<TextView>(R.id.balanceETH)
         val buyButton = newView.findViewById<Button>(R.id.balanceBuy)
         val sellButton = newView.findViewById<Button>(R.id.balanceSell)
-        val mPrefs = requireActivity().getPreferences(Context.MODE_PRIVATE)
-//        if (mPrefs.contains(BALANCE_USD_KEY)) {
-//            usdView.setText("$ " + mPrefs.getFloat(BALANCE_USD_KEY, 0F).toString())
-//        }
-        if (mPrefs.contains(BALANCE_ETH_KEY)) {
-            ethView.text = (mPrefs.getFloat(BALANCE_ETH_KEY, 0F).toString() + " ETH")
+        val ethValue = 2743.22
+        val userid = FirebaseAuth.getInstance().currentUser!!.uid
+        val myRef = Firebase.database.getReference(userid)
+        myRef.get().addOnSuccessListener {
+            if (it.value == null) {
+                myRef.setValue(0)
+                ethView.text = ("0 ETH")
+                usdView.text = "$0"
+            } else {
+                ethView.text = (it.value.toString() + " ETH")
+                val roundedUSD = "%,.2f".format(Locale.ENGLISH, (it.value.toString().toFloat() * ethValue))
+                usdView.text = "$" + roundedUSD.toString()
+            }
         }
         buyButton.setOnClickListener {
             val fragmentManager = requireActivity().supportFragmentManager
@@ -42,12 +52,16 @@ class FragmentBalance : Fragment() {
             buyButton.visibility = View.INVISIBLE
             sellButton.visibility = View.INVISIBLE
         }
+        sellButton.setOnClickListener {
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction = fragmentManager!!.beginTransaction()
+            fragmentTransaction.replace(R.id.balance_view, FragmentBalanceSell())
+            fragmentTransaction.commit()
+            fragmentManager.executePendingTransactions()
+            buyButton.visibility = View.INVISIBLE
+            sellButton.visibility = View.INVISIBLE
+        }
         return newView
-    }
-
-    companion object {
-        private const val BALANCE_USD_KEY = "BALANCE_USD_KEY"
-        private const val BALANCE_ETH_KEY = "BALANCE_ETH_KEY"
     }
 
 }

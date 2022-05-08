@@ -5,16 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="center"
-    android:visibility="visible"
-    android:id="@+id/balance_view"
+    android:id="@+id/balance_buy_view"
     android:background="@android:color/white">
 
-
     <TextView
-        android:id="@+id/balanceTitle"
+        android:id="@+id/balanceBuyTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Balance"
+        android:text="Buy Ethereum"
         android:textSize="50dp"
         app:layout_constraintVertical_bias="0.1"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,11 +21,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/balanceUSD"
+        android:id="@+id/balanceBuyDollarsign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="$"
         android:textSize="30dp"
+        app:layout_constraintHorizontal_bias="0.39"
+        app:layout_constraintBottom_toBottomOf="@+id/balanceBuyUSD"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/balanceBuyUSD" />
+
+    <EditText
+        android:id="@+id/balanceBuyUSD"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="6"
+        android:inputType="numberDecimal"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintVertical_bias="0.5"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -36,11 +46,23 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/balanceETH"
+        android:id="@+id/balanceBuyEthereumsign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="ETH"
         android:textSize="30dp"
+        app:layout_constraintHorizontal_bias="0.65"
+        app:layout_constraintBottom_toBottomOf="@+id/balanceBuyETH"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/balanceBuyETH" />
+
+    <EditText
+        android:id="@+id/balanceBuyETH"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="6"
+        android:inputType="numberDecimal"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintVertical_bias="0.8"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -49,29 +71,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/balanceBuy"
+        android:id="@+id/balanceBuyCancel"
         android:layout_width="160dp"
         android:layout_height="100dp"
-        android:text="BUY"
-        android:textSize="30dp"
-        app:layout_constraintHorizontal_bias="0.8"
+        android:text="CANCEL"
+        android:textSize="25dp"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintVertical_bias="1"
-        app:layout_constraintBottom_toBottomOf="@+id/balanceETH"
-        app:layout_constraintLeft_toRightOf="@+id/balanceETH"
-        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/balanceBuyETH"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/balanceBuyETH"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/balanceSell"
+        android:id="@+id/balanceBuyConfirm"
         android:layout_width="160dp"
         android:layout_height="100dp"
-        android:text="SELL"
-        android:textSize="30dp"
-        app:layout_constraintHorizontal_bias="0.2"
+        android:text="CONFIRM"
+        android:textSize="25dp"
+        app:layout_constraintHorizontal_bias="0.8"
         app:layout_constraintVertical_bias="1"
-        app:layout_constraintBottom_toBottomOf="@+id/balanceETH"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toLeftOf="@+id/balanceETH"
+        app:layout_constraintBottom_toBottomOf="@+id/balanceBuyETH"
+        app:layout_constraintLeft_toRightOf="@+id/balanceBuyETH"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
