@@ -20,7 +20,7 @@
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:gravity="center|end"
                 android:minHeight="?actionBarSize"
                 android:padding="@dimen/appbar_padding"
@@ -35,7 +35,7 @@
             <Button
                 android:id="@+id/buttonSignOut"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_gravity="right|top"
                 android:onClick="signOut"
                 android:padding="@dimen/appbar_padding"
