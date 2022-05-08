@@ -37,12 +37,10 @@ class FragmentBalance : Fragment() {
             val fragmentManager = requireActivity().supportFragmentManager
             val fragmentTransaction = fragmentManager!!.beginTransaction()
             fragmentTransaction.replace(R.id.balance_view, FragmentBalanceBuy())
-            //fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
             fragmentManager.executePendingTransactions()
             buyButton.visibility = View.INVISIBLE
             sellButton.visibility = View.INVISIBLE
-            Log.i("NICE", "WE DID IT BOYS")
         }
         return newView
     }

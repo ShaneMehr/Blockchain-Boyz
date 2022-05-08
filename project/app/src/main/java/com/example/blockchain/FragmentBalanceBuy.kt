@@ -54,7 +54,6 @@ class FragmentBalanceBuy : Fragment() {
                     val fragmentManager = requireActivity().supportFragmentManager
                     val fragmentTransaction = fragmentManager!!.beginTransaction()
                     fragmentTransaction.replace(R.id.balance_buy_view, FragmentBalance())
-                    //fragmentTransaction.addToBackStack(null)
                     fragmentTransaction.commit()
                     fragmentManager.executePendingTransactions()
                     confirmButton.visibility = View.INVISIBLE
@@ -67,8 +66,15 @@ class FragmentBalanceBuy : Fragment() {
                 Toast.makeText(newView.context, "Please enter a quantity to purchase",
                     Toast.LENGTH_SHORT).show()
             }
-
-            //requireActivity().supportFragmentManager.popBackStack()
+        }
+        cancelButton.setOnClickListener {
+            val fragmentManager = requireActivity().supportFragmentManager
+            val fragmentTransaction = fragmentManager!!.beginTransaction()
+            fragmentTransaction.replace(R.id.balance_buy_view, FragmentBalance())
+            fragmentTransaction.commit()
+            fragmentManager.executePendingTransactions()
+            confirmButton.visibility = View.INVISIBLE
+            cancelButton.visibility = View.INVISIBLE
         }
         return newView
     }
